@@ -1,4 +1,4 @@
-// import type { Handle } from '@sveltejs/kit/hooks';
+import { sequence, type Handle } from "@sveltejs/kit/hooks";
 // import { building } from '$app/env';
 // import { auth } from '#lib/server/auth.ts';
 // import { svelteKitHandler } from 'better-auth/svelte-kit';
@@ -15,3 +15,13 @@
 // };
 //
 // export const handle: Handle = handleBetterAuth;
+
+const handleFontPreloading: Handle = async ({ event, resolve }) => {
+	return resolve(event, {
+		preload: (asset) => {
+			return asset.type === "font" && asset.filename.includes("InterVariable");
+		},
+	});
+};
+
+export const handle = sequence(handleFontPreloading);

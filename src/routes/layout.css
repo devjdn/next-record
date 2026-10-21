@@ -1,2 +1,177 @@
 @import "tailwindcss";
 @plugin '@tailwindcss/forms';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@font-face {
+	font-family: "Inter";
+	src: url("/src/lib/assets/fonts/InterVariable.woff2") format("woff2");
+	font-weight: 100 900;
+	font-style: normal;
+	font-display: swap;
+}
+
+@theme {
+	--font-sans: "Inter", sans-serif;
+	--color-neutral-50: oklch(0.985 0 0);
+	--color-neutral-100: oklch(0.96 0 0);
+	--color-neutral-200: oklch(0.92 0 0);
+	--color-neutral-300: oklch(0.86 0 0);
+	--color-neutral-400: oklch(0.76 0 0);
+	--color-neutral-500: oklch(0.64 0 0);
+	--color-neutral-600: oklch(0.52 0 0);
+	--color-neutral-700: oklch(0.41 0 0);
+	--color-neutral-800: oklch(0.31 0 0);
+	--color-neutral-900: oklch(0.22 0 0);
+	--color-neutral-950: oklch(0.14 0 0);
+}
+
+:root {
+	/* Page and content */
+	--background: var(--color-neutral-50);
+	--foreground: var(--color-neutral-900);
+	--muted: var(--color-neutral-100);
+	--muted-foreground: var(--color-neutral-600);
+
+	/* Page actions */
+	--primary: var(--color-neutral-900);
+	--primary-foreground: var(--color-neutral-50);
+	--secondary: var(--color-neutral-200);
+	--secondary-foreground: var(--color-neutral-900);
+	--accent: var(--color-neutral-200);
+	--accent-foreground: var(--color-neutral-900);
+
+	/* Destructive */
+	--destructive: oklch(0.94 0.045 25);
+	--destructive-foreground: oklch(0.38 0.14 25);
+
+	/* Popover layer */
+	--popover: var(--color-neutral-900);
+	--popover-foreground: var(--color-neutral-50);
+	--popover-primary: var(--color-neutral-50);
+	--popover-primary-foreground: var(--color-neutral-900);
+	--popover-secondary: var(--color-neutral-800);
+	--popover-secondary-foreground: var(--color-neutral-50);
+
+	/* Inputs and borders */
+	--input: var(--color-neutral-100);
+	--input-foreground: var(--color-neutral-900);
+	--border: var(--color-neutral-300);
+	--ring: var(--color-neutral-600);
+
+	/* Feedback */
+	--success: oklch(0.94 0.045 150);
+	--success-foreground: oklch(0.32 0.085 150);
+	--warning: oklch(0.95 0.07 90);
+	--warning-foreground: oklch(0.35 0.075 75);
+
+	/* Spacing and sizing */
+	--inline-spacing: 1rem;
+	--section-padding: 2rem;
+	--section-spacing: 3rem;
+	--page-block-spacing: 1.5rem;
+	--grid-gap: 0.75rem;
+	--icon-text-gap: 0.5rem;
+	--content-max-width: 90rem;
+}
+
+@theme inline {
+	/* Page and content */
+	--color-background: var(--background);
+	--color-foreground: var(--foreground);
+	--color-muted: var(--muted);
+	--color-muted-foreground: var(--muted-foreground);
+
+	/* Page actions */
+	--color-primary: var(--primary);
+	--color-primary-foreground: var(--primary-foreground);
+	--color-secondary: var(--secondary);
+	--color-secondary-foreground: var(--secondary-foreground);
+	--color-accent: var(--accent);
+	--color-accent-foreground: var(--accent-foreground);
+	--color-destructive: var(--destructive);
+	--color-destructive-foreground: var(--destructive-foreground);
+
+	/* Popover layer */
+	--color-popover: var(--popover);
+	--color-popover-foreground: var(--popover-foreground);
+	--color-popover-primary: var(--popover-primary);
+	--color-popover-primary-foreground: var(--popover-primary-foreground);
+	--color-popover-secondary: var(--popover-secondary);
+	--color-popover-secondary-foreground: var(--popover-secondary-foreground);
+
+	/* Inputs and boundaries */
+	--color-input: var(--input);
+	--color-input-foreground: var(--input-foreground);
+	--color-border: var(--border);
+	--color-ring: var(--ring);
+
+	/* Feedback */
+	--color-success: var(--success);
+	--color-success-foreground: var(--success-foreground);
+	--color-warning: var(--warning);
+	--color-warning-foreground: var(--warning-foreground);
+
+	/* Spacing */
+	--spacing-inline-spacing: var(--inline-spacing);
+	--spacing-section-padding: var(--section-padding);
+	--spacing-section-spacing: var(--section-spacing);
+	--spacing-page-block-spacing: var(--page-block-spacing);
+	--spacing-grid-gap: var(--grid-gap);
+	--spacing-icon-text-gap: var(--icon-text-gap);
+}
+
+@layer base {
+	* {
+		@apply border-border outline-ring/50;
+	}
+
+	html {
+		@apply overscroll-y-none;
+	}
+
+	body {
+		@apply bg-background text-foreground;
+		font-feature-settings: "ss07", "ss08";
+	}
+}
+
+@utility content-width {
+	width: 100%;
+	max-width: var(--content-max-width);
+	padding-inline: var(--inline-spacing);
+	margin-inline: auto;
+	container-type: inline-size;
+	container-name: page-content;
+}
+
+@utility page-grid {
+	display: grid;
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+	gap: var(--grid-gap);
+}
+
+@media (min-width: 48rem) {
+	:root {
+		--inline-spacing: 1.5rem;
+		--section-spacing: 4rem;
+		--page-block-spacing: 2rem;
+		--grid-gap: 1.5rem;
+	}
+
+	.page-grid {
+		grid-template-columns: repeat(8, minmax(0, 1fr));
+	}
+}
+
+@media (min-width: 64rem) {
+	:root {
+		--section-padding: 3rem;
+		--page-block-spacing: 3rem;
+		--grid-gap: 1.5rem;
+	}
+
+	.page-grid {
+		grid-template-columns: repeat(12, minmax(0, 1fr));
+	}
+}
