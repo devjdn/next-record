@@ -24,6 +24,7 @@
 	--color-neutral-800: oklch(0.31 0 0);
 	--color-neutral-900: oklch(0.22 0 0);
 	--color-neutral-950: oklch(0.14 0 0);
+	--tracking-tight: -0.02em;
 }
 
 :root {
@@ -46,12 +47,20 @@
 	--destructive-foreground: oklch(0.38 0.14 25);
 
 	/* Popover layer */
-	--popover: var(--color-neutral-900);
-	--popover-foreground: var(--color-neutral-50);
+	--popover: var(--color-neutral-800);
+	--popover-foreground: var(--color-neutral-100);
+	--popover-muted-foreground: color-mix(in oklch, var(--popover-foreground) 60%, var(--popover));
 	--popover-primary: var(--color-neutral-50);
 	--popover-primary-foreground: var(--color-neutral-900);
-	--popover-secondary: var(--color-neutral-800);
+	--popover-secondary: color-mix(in oklch, var(--popover-foreground) 9%, var(--popover));
 	--popover-secondary-foreground: var(--color-neutral-50);
+	--popover-separator: color-mix(in oklch, var(--popover-foreground) 12%, var(--popover));
+	--popover-destructive-foreground: oklch(0.8 0.1 25);
+	--popover-destructive: color-mix(
+		in oklch,
+		var(--popover-destructive-foreground) 14%,
+		var(--popover)
+	);
 
 	/* Inputs and borders */
 	--input: var(--color-neutral-100);
@@ -73,6 +82,7 @@
 	--grid-gap: 0.75rem;
 	--icon-text-gap: 0.5rem;
 	--content-max-width: 90rem;
+	--radius: 0.875rem;
 }
 
 @theme inline {
@@ -95,10 +105,14 @@
 	/* Popover layer */
 	--color-popover: var(--popover);
 	--color-popover-foreground: var(--popover-foreground);
+	--color-popover-muted-foreground: var(--popover-muted-foreground);
 	--color-popover-primary: var(--popover-primary);
 	--color-popover-primary-foreground: var(--popover-primary-foreground);
 	--color-popover-secondary: var(--popover-secondary);
 	--color-popover-secondary-foreground: var(--popover-secondary-foreground);
+	--color-popover-separator: var(--popover-separator);
+	--color-popover-destructive: var(--popover-destructive);
+	--color-popover-destructive-foreground: var(--popover-destructive-foreground);
 
 	/* Inputs and boundaries */
 	--color-input: var(--input);
@@ -119,6 +133,14 @@
 	--spacing-page-block-spacing: var(--page-block-spacing);
 	--spacing-grid-gap: var(--grid-gap);
 	--spacing-icon-text-gap: var(--icon-text-gap);
+	--radius-xs: calc(var(--radius) * 0.35);
+	--radius-sm: calc(var(--radius) * 0.55);
+	--radius-md: calc(var(--radius) * 0.75);
+	--radius-lg: var(--radius);
+	--radius-xl: calc(var(--radius) * 1.4);
+	--radius-2xl: calc(var(--radius) * 1.8);
+	--radius-3xl: calc(var(--radius) * 2.3);
+	--radius-4xl: calc(var(--radius) * 3);
 }
 
 @layer base {
@@ -149,6 +171,10 @@
 	display: grid;
 	grid-template-columns: repeat(4, minmax(0, 1fr));
 	gap: var(--grid-gap);
+}
+
+@utility text-trim {
+	text-box: trim-both cap alphabetic;
 }
 
 @media (min-width: 48rem) {
