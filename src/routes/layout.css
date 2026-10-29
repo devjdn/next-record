@@ -85,6 +85,48 @@
 	--radius: 0.875rem;
 }
 
+.dark {
+	/* Page and content */
+	--background: var(--color-neutral-950);
+	--foreground: var(--color-neutral-50);
+	--muted: var(--color-neutral-900);
+	--muted-foreground: var(--color-neutral-400);
+
+	/* Page actions */
+	--primary: var(--color-neutral-50);
+	--primary-foreground: var(--color-neutral-900);
+	--secondary: var(--color-neutral-800);
+	--secondary-foreground: var(--color-neutral-100);
+	--accent: var(--color-neutral-800);
+	--accent-foreground: var(--color-neutral-100);
+
+	/* Destructive */
+	--destructive: oklch(0.32 0.1 25);
+	--destructive-foreground: oklch(0.85 0.08 25);
+
+	/* Inputs and borders */
+	--input: var(--color-neutral-900);
+	--input-foreground: var(--color-neutral-50);
+	--border: var(--color-neutral-700);
+	--ring: var(--color-neutral-400);
+
+	/* Feedback */
+	--success: oklch(0.3 0.07 150);
+	--success-foreground: oklch(0.82 0.1 150);
+	--warning: oklch(0.32 0.08 85);
+	--warning-foreground: oklch(0.85 0.1 85);
+
+	/* Spacing and sizing — unchanged */
+	--inline-spacing: 1rem;
+	--section-padding: 2rem;
+	--section-spacing: 3rem;
+	--page-block-spacing: 1.5rem;
+	--grid-gap: 0.75rem;
+	--icon-text-gap: 0.5rem;
+	--content-max-width: 90rem;
+	--radius: 0.875rem;
+}
+
 @theme inline {
 	/* Page and content */
 	--color-background: var(--background);

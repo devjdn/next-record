@@ -3,6 +3,7 @@
     import favicon from "#lib/assets/favicon.svg";
     import type { LayoutProps } from "./$types";
     import Header from "#lib/components/header/Header.svelte";
+    import { ModeWatcher } from "mode-watcher";
 
     let { children }: LayoutProps = $props();
 </script>
@@ -12,5 +13,9 @@
     <title>Next Record • Find your next record</title>
 </svelte:head>
 
+<ModeWatcher />
+
 <Header />
-{@render children()}
+<main class="py-page-block-spacing">
+    {@render children()}
+</main>

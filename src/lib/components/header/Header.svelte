@@ -19,11 +19,11 @@
         >
             <path
                 d="M196 0C198.209 0 200 1.79086 200 4V20C155.817 20 120 55.8173 120 100C120 143.837 154.294 179.446 198 180H200V196C200 198.209 198.209 200 196 200H4C1.79086 200 0 198.209 0 196V4C0 1.79086 1.79086 0 4 0H196Z"
-                fill="black"
+                fill="currentColor"
             />
             <path
                 d="M200 133.684L199.131 133.673C180.929 133.212 166.315 118.313 166.315 99.9999C166.315 81.3966 181.397 66.3153 200 66.3153V133.684Z"
-                fill="black"
+                fill="currentColor"
             />
         </svg>
     </a>
@@ -32,7 +32,7 @@
             <a
                 href={link.href}
                 aria-label="Go to {link.name}"
-                class="inline-block text-trim text-muted-foreground hover:text-foreground duration-200 transition-colors font-medium w-fit col-span-2"
+                class="inline-block text-trim text-sm text-muted-foreground hover:text-foreground duration-200 transition-colors w-fit"
             >
                 {link.name}
             </a>
